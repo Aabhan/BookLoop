@@ -1,0 +1,42 @@
+name: ecom_2
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment: 
+  sdk: '>=3.0.6 <4.0.0'
+
+dependencies: 
+  cupertino_icons: ^1.0.2
+  get: 4.6.5
+  flutter: 
+    sdk: flutter
+  path_provider: ^2.0.2
+  floating_bottom_navigation_bar: ^1.5.2
+  http: ^1.1.0
+  shared_preferences: ^2.2.0
+  image_picker: ^1.0.2
+  khalti_flutter: ^3.0.0
+  pdf: ^3.10.8
+  url_launcher: ^6.1.9
+  flutter_rating_bar: ^4.0.1
+  
+
+
+dev_dependencies: 
+  flutter_lints: ^2.0.0
+  flutter_test: 
+    sdk: flutter
+
+flutter: 
+  uses-material-design: true
+
+  assets:
+    - assets/BookLoopLogo.png
+    - assets/BookLoop.png
+    - assets/firstView.jpg
+    - assets/onboardingSecondpng.png
+    - assets/thirdView.jpg
+
+  
+
+  
