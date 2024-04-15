@@ -1,3 +1,4 @@
+import 'package:ecom_2/app/components/featuredProductCard.dart';
 import 'package:ecom_2/app/components/product_card.dart';
 import 'package:ecom_2/app/components/user_product_card.dart';
 
@@ -286,8 +287,9 @@ class HomeView extends GetView<HomeController> {
                                 itemBuilder: (context, index) {
                                   return SizedBox(
                                     width: 200,
-                                    child: ProductCard(
-                                      product: controller.products![index],
+                                    child: FeaturedProductCard(
+                                      featuredProducts:
+                                          controller.featuredProducts![index],
                                     ),
                                   );
                                 },
