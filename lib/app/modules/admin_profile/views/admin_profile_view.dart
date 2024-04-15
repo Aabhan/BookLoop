@@ -4,7 +4,7 @@ import 'package:ecom_2/app/modules/membership/views/membership_view.dart';
 import 'package:ecom_2/app/routes/app_pages.dart';
 import 'package:ecom_2/app/utils/memoryManagement.dart';
 import 'package:ecom_2/app/views/views/about_us_view.dart';
-import 'package:ecom_2/app/views/views/edit_profile_view_view.dart';
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';

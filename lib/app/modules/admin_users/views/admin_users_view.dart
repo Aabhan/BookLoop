@@ -26,14 +26,53 @@ class AdminUsersView extends GetView<AdminUsersController> {
               child: CircularProgressIndicator(),
             );
           }
-          return Container(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-            child: ListView.builder(
-                itemCount: controller.users!.length,
-                itemBuilder: (context, index) {
-                  return UserCard(user: controller.users![index]);
-                }),
-          );
+          var adminUsers = controller.users
+                  ?.where((user) => user.role == 'admin')
+                  .toList() ??
+              [];
+
+          var normalUsers =
+              controller.users?.where((user) => user.role == 'user').toList() ??
+                  [];
+          return DefaultTabController(
+              length: 2,
+              child: Column(
+                children: [
+                  const TabBar(
+                    labelStyle: TextStyle(color: Colors.teal, fontSize: 22),
+                    tabs: [
+                      Tab(
+                        child: Text(
+                          'Users',
+                          style: TextStyle(color: Colors.teal),
+                        ),
+                      ),
+                      Tab(
+                        child: Text(
+                          'Admins',
+                          style: TextStyle(color: Colors.teal),
+                        ),
+                      ),
+                    ],
+                    indicatorColor: Colors.teal,
+                  ),
+                  Expanded(
+                      child: TabBarView(
+                    children: [
+                      ListView.builder(
+                        itemCount: normalUsers.length,
+                        itemBuilder: (context, index) => UserCard(
+                          user: normalUsers[index],
+                        ),
+                      ),
+                      ListView.builder(
+                          itemCount: adminUsers.length,
+                          itemBuilder: (context, index) =>
+                              UserCard(user: adminUsers[index]))
+                    ],
+                  ))
+                ],
+              ));
         },
       ),
       floatingActionButton: FloatingActionButton(

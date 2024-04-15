@@ -23,6 +23,7 @@ class UserProductEditView extends GetView<UserProductEditController> {
       appBar: AppBar(
         title: const Text('Edit Product'),
         centerTitle: true,
+        backgroundColor: const Color(0xff9CC69B),
       ),
       body: Obx(
         () => controller.isLoading.value
@@ -32,29 +33,62 @@ class UserProductEditView extends GetView<UserProductEditController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
+                    const SizedBox(height: 20),
                     TextFormField(
                       controller: controller.titleController,
-                      decoration: const InputDecoration(labelText: 'Title'),
+                      decoration: const InputDecoration(
+                        border:
+                            OutlineInputBorder(), // Add border to the dropdown field
+                        contentPadding: EdgeInsets.symmetric(
+                            horizontal: 15.0, vertical: 12.0),
+                        labelText: 'Title',
+                      ),
                     ),
+                    const SizedBox(height: 20),
                     TextFormField(
                       controller: controller.descriptionController,
-                      decoration:
-                          const InputDecoration(labelText: 'Description'),
+                      decoration: const InputDecoration(
+                        labelText: 'Description',
+                        border:
+                            OutlineInputBorder(), // Add border to the dropdown field
+                        contentPadding: EdgeInsets.symmetric(
+                            horizontal: 15.0, vertical: 60.0),
+                      ),
                     ),
+                    const SizedBox(height: 20),
                     TextFormField(
                       controller: controller.priceController,
-                      decoration: const InputDecoration(labelText: 'Price'),
+                      decoration: const InputDecoration(
+                        labelText: 'Price',
+                        border:
+                            OutlineInputBorder(), // Add border to the dropdown field
+                        contentPadding: EdgeInsets.symmetric(
+                            horizontal: 15.0, vertical: 12.0),
+                      ),
                     ),
+                    const SizedBox(height: 20),
                     DropdownButtonFormField<bool>(
                       value: controller.isOld,
-                      items: [
+                      items: const [
                         DropdownMenuItem<bool>(
                           value: true,
-                          child: const Text('Old'),
+                          child: Text(
+                            'Old',
+                            style: TextStyle(
+                              color:
+                                  Colors.black, // Adjust text color as needed
+                            ),
+                          ),
                         ),
                         DropdownMenuItem<bool>(
                           value: false,
-                          child: const Text('New'),
+                          child: Text(
+                            'New',
+                            style: TextStyle(
+                              color:
+                                  Colors.black, // Adjust text color as needed
+                            ),
+                          ),
                         ),
                       ],
                       onChanged: (value) {
@@ -63,29 +97,49 @@ class UserProductEditView extends GetView<UserProductEditController> {
                       decoration: const InputDecoration(
                         labelText: 'Condition',
                         hintText: 'Select Condition',
+                        border:
+                            OutlineInputBorder(), // Add border to the dropdown field
+                        contentPadding: EdgeInsets.symmetric(
+                            horizontal: 15.0,
+                            vertical: 12.0), // Adjust padding as needed
+                        // You can add other InputDecoration properties as desired
                       ),
+                      style: const TextStyle(
+                          color: Colors
+                              .black), // Adjust dropdown button text color
+                      icon: const Icon(
+                          Icons.arrow_drop_down), // Add custom dropdown icon
                     ),
+                    const SizedBox(height: 20),
                     DropdownButtonFormField<bool>(
                       value: controller.isNegotiable,
-                      items: [
+                      items: const [
                         DropdownMenuItem<bool>(
                           value: true,
-                          child: const Text('Negotiable'),
+                          child: Text('Negotiable'),
                         ),
                         DropdownMenuItem<bool>(
                           value: false,
-                          child: const Text('Fix'),
+                          child: Text('Fix'),
                         ),
                       ],
                       onChanged: (value) {
                         controller.isNegotiable = value ?? false;
                       },
                       decoration: const InputDecoration(
+                        border:
+                            OutlineInputBorder(), // Add border to the dropdown field
+                        contentPadding: EdgeInsets.symmetric(
+                            horizontal: 15.0, vertical: 12.0),
                         labelText: 'Price Negotiability',
                         hintText: 'Select Negotiability',
                       ),
                     ),
+                    const SizedBox(height: 20),
                     ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xff9CC69B),
+                      ),
                       onPressed: () {
                         // Call the controller method to update the product
                         controller.updateProduct(product.productId.toString());

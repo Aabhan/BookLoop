@@ -32,6 +32,8 @@ import '../modules/detailed_product/bindings/detailed_product_binding.dart';
 import '../modules/detailed_product/views/detailed_product_view.dart';
 import '../modules/donate/bindings/donate_binding.dart';
 import '../modules/donate/views/donate_view.dart';
+import '../modules/edit_profile/bindings/edit_profile_binding.dart';
+import '../modules/edit_profile/views/edit_profile_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -198,6 +200,11 @@ class AppPages {
       name: _Paths.USER_ORDER_DETAILS,
       page: () => const UserOrderDetailsView(),
       binding: UserOrderDetailsBinding(),
+    ),
+    GetPage(
+      name: _Paths.EDIT_PROFILE,
+      page: () => EditProfileView(),
+      binding: EditProfileBinding(),
     ),
   ];
 }

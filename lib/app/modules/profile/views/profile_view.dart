@@ -1,4 +1,5 @@
 import 'package:ecom_2/app/components/logout_button.dart';
+import 'package:ecom_2/app/model/user.dart';
 import 'package:ecom_2/app/modules/cart/views/cart_view.dart';
 
 import 'package:ecom_2/app/modules/membership/views/membership_view.dart';
@@ -7,7 +8,7 @@ import 'package:ecom_2/app/modules/user_product_list/views/user_product_list_vie
 import 'package:ecom_2/app/routes/app_pages.dart';
 import 'package:ecom_2/app/utils/memoryManagement.dart';
 import 'package:ecom_2/app/views/views/about_us_view.dart';
-import 'package:ecom_2/app/views/views/edit_profile_view_view.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -81,6 +82,16 @@ class ProfileView extends GetView<ProfileController> {
                             color: Colors.black,
                           ),
                         ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          controller.user?.userLocation ?? '',
+                          style: const TextStyle(
+                            fontSize: 15,
+                            color: Colors.black,
+                          ),
+                        ),
                       ],
                     ),
                   ],
@@ -103,11 +114,7 @@ class ProfileView extends GetView<ProfileController> {
                         trailing:
                             const Icon(Icons.keyboard_arrow_right_rounded),
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const EditProfileView()));
+                          Get.toNamed(Routes.EDIT_PROFILE, arguments: User);
                         },
                       ),
                       ListTile(
