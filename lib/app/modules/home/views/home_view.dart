@@ -1,10 +1,7 @@
-import 'package:ecom_2/app/components/admin_product_card.dart';
 import 'package:ecom_2/app/components/product_card.dart';
 import 'package:ecom_2/app/components/user_product_card.dart';
 
 import 'package:ecom_2/app/model/product.dart';
-
-import 'package:ecom_2/app/modules/admin_categories/views/admin_categories_view.dart';
 import 'package:ecom_2/app/modules/blog/views/blog_view.dart';
 import 'package:ecom_2/app/modules/donate/views/donate_view.dart';
 import 'package:ecom_2/app/modules/membership/views/membership_view.dart';
@@ -36,9 +33,6 @@ class HomeView extends GetView<HomeController> {
               height: 120,
               width: 120,
               decoration: const BoxDecoration(
-                // image: DecorationImage(
-                //     image: NetworkImage(
-                //         'https://1000logos.net/wp-content/uploads/2016/10/Apple-Logo.png')),
                 color: Color(0xff9CC69B),
                 shape: BoxShape.circle,
               ),
@@ -201,6 +195,35 @@ class HomeView extends GetView<HomeController> {
                       ],
                     ),
                   ),
+                  const SizedBox(height: 25),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'Categories',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const CategoriesView()));
+                        },
+                        child: const Text(
+                          'See All', // Text "See All"
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xff9CC69B), // Change color as needed
+                            decoration: TextDecoration.underline,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                   const SizedBox(height: 20),
                   SizedBox(
                     height: 40,
@@ -235,6 +258,61 @@ class HomeView extends GetView<HomeController> {
                                 ),
                               ));
                         }),
+                  ),
+                  const SizedBox(
+                    height: 50,
+                  ),
+
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Featured Products',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 20),
+                      controller.featuredProducts == null
+                          ? const Center(
+                              child: CircularProgressIndicator(),
+                            )
+                          : SizedBox(
+                              height:
+                                  200, // Set a fixed height for the ListView
+                              child: ListView.separated(
+                                scrollDirection: Axis.horizontal,
+                                itemCount:
+                                    controller.featuredProducts?.length ?? 0,
+                                itemBuilder: (context, index) {
+                                  return SizedBox(
+                                    width: 200,
+                                    child: ProductCard(
+                                      product: controller.products![index],
+                                    ),
+                                  );
+                                },
+                                separatorBuilder: (context, index) {
+                                  return const SizedBox(
+                                      width:
+                                          16); // Add space between product cards
+                                },
+                              ),
+                            ),
+                    ],
+                  ),
+
+                  //
+                  const SizedBox(
+                    height: 60,
+                  ),
+                  const Row(
+                    children: [
+                      Text(
+                        'Products',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ],
                   ),
                   const SizedBox(
                     height: 20,

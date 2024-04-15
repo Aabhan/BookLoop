@@ -4,6 +4,7 @@ import 'package:ecom_2/app/components/addProductPopup.dart';
 import 'package:ecom_2/app/components/addUserProductPopUp.dart';
 import 'package:ecom_2/app/constants.dart';
 import 'package:ecom_2/app/model/category.dart';
+import 'package:ecom_2/app/model/featuredProducts.dart';
 import 'package:ecom_2/app/model/product.dart';
 import 'package:ecom_2/app/model/user.dart';
 
@@ -23,6 +24,7 @@ class HomeController extends GetxController {
   List<Category>? categories;
   List<Product>? products;
   List<User>? users;
+  List<FeaturedProducts>? featuredProducts;
   final count = 0.obs;
   String? selectedCategory;
   final ImagePicker picker = ImagePicker();
@@ -48,6 +50,7 @@ class HomeController extends GetxController {
     getCategories();
     getProducts();
     getuser();
+    getFeaturedProducts();
   }
 
   void onPickImage() async {
@@ -304,6 +307,33 @@ class HomeController extends GetxController {
   //     }
   //   } catch (e) {}
   // }
+  void getFeaturedProducts() async {
+    try {
+      var url = Uri.http(ipAddress, 'ecom2_api/getFeaturedProducts');
+      var response = await http.get(url);
+
+      var result = jsonDecode(response.body);
+
+      if (result['success']) {
+        Get.showSnackbar(GetSnackBar(
+          backgroundColor: Colors.green,
+          message: result['message'],
+          duration: const Duration(seconds: 3),
+        ));
+
+        featuredProducts = featuredProductsFromJson(
+          jsonEncode(result['data']),
+        );
+        update();
+      }
+    } catch (e) {
+      Get.showSnackbar(const GetSnackBar(
+        backgroundColor: Colors.red,
+        message: 'Something went wrong',
+        duration: Duration(seconds: 3),
+      ));
+    }
+  }
 
   void deleteUser(String? userId) {}
   void increment() => count.value++;

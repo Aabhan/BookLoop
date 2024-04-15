@@ -20,6 +20,7 @@ dependencies:
   url_launcher: ^6.1.9
   flutter_rating_bar: ^4.0.1
   
+  
 
 
 dev_dependencies: 
@@ -37,6 +38,11 @@ flutter:
     - assets/onboardingSecondpng.png
     - assets/thirdView.jpg
 
-  
+fonts:
+  - family: LobsterTwo
+    fonts:
+      - asset: fonts/LobsterTwo-Regular.ttf
+      
+
 
   
