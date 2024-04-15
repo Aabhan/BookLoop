@@ -1,7 +1,6 @@
-# ecom_2
+# Book Loop 
 
-A new Flutter project.
-
+Final Year Project 2024
 ## Getting Started
 
 This project is a starting point for a Flutter application.
