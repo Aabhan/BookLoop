@@ -65,32 +65,64 @@ class ProfileView extends GetView<ProfileController> {
                           ),
                         ),
                         const SizedBox(height: 10),
-                        Text(
-                          controller.user?.email ?? '',
-                          style: const TextStyle(
-                            fontSize: 20,
-                            color: Colors.black,
-                          ),
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.email,
+                              color: Color(0xff9CC69B),
+                              size: 20,
+                            ),
+                            const SizedBox(
+                                width:
+                                    5), // Adjust the spacing between icon and text
+                            Text(
+                              controller.user?.email ?? '',
+                              style: const TextStyle(
+                                fontSize: 15,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
                         ),
-                        const SizedBox(
-                          height: 10,
+                        const SizedBox(height: 10),
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.phone,
+                              color: Color(0xff9CC69B),
+                              size: 20,
+                            ),
+                            const SizedBox(
+                                width:
+                                    5), // Adjust the spacing between icon and text
+                            Text(
+                              controller.user?.phoneNumber ?? '',
+                              style: const TextStyle(
+                                fontSize: 15,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
                         ),
-                        Text(
-                          controller.user?.phoneNumber ?? '',
-                          style: const TextStyle(
-                            fontSize: 15,
-                            color: Colors.black,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          controller.user?.userLocation ?? '',
-                          style: const TextStyle(
-                            fontSize: 15,
-                            color: Colors.black,
-                          ),
+                        const SizedBox(height: 10),
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.location_on,
+                              color: Color(0xff9CC69B),
+                              size: 20,
+                            ),
+                            const SizedBox(
+                                width:
+                                    5), // Adjust the spacing between icon and text
+                            Text(
+                              controller.user?.userLocation ?? '',
+                              style: const TextStyle(
+                                fontSize: 15,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),

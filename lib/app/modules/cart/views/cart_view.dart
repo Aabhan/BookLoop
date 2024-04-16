@@ -176,7 +176,7 @@ class CartCard extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  flex: 3,
+                  flex: 4,
                   child: Padding(
                     padding:
                         const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
@@ -210,39 +210,30 @@ class CartCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Container(
-                  width: 80, // Adjusted width for better button sizing
-                  height: 30, // Adjusted height for better button sizing
-                  decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: TextButton(
-                    onPressed: () {
-                      controller.removeProduct(index);
-                    },
-                    child: const Text(
-                      'Delete',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
+                IconButton(
+                  onPressed: () {
+                    controller.removeProduct(index);
+                  },
+                  icon: const Icon(Icons.clear, color: Colors.red),
                 ),
                 const SizedBox(height: 8),
-                Container(
-                  width: 80, // Adjusted width for better button sizing
-                  height: 30, // Adjusted height for better button sizing
-                  decoration: BoxDecoration(
-                    color: Colors.green,
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: TextButton(
-                    onPressed: () {
-                      Get.to(() => CheckoutView());
-                    },
-                    child: const Text(
-                      'Buy Now',
-                      style: TextStyle(color: Colors.white),
+                TextButton(
+                  onPressed: () {
+                    Get.to(() => CheckoutView());
+                  },
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.green,
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 8,
+                      horizontal: 12,
                     ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                  ),
+                  child: const Text(
+                    'Buy Now',
+                    style: TextStyle(color: Colors.white),
                   ),
                 ),
               ],

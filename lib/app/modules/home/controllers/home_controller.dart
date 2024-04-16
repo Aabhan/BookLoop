@@ -24,7 +24,7 @@ class HomeController extends GetxController {
   List<Category>? categories;
   List<Product>? products;
   List<User>? users;
-  List<FeaturedProducts>? featuredProducts;
+  List<Product>? featuredProducts;
   final count = 0.obs;
   String? selectedCategory;
   final ImagePicker picker = ImagePicker();
@@ -315,13 +315,15 @@ class HomeController extends GetxController {
       var result = jsonDecode(response.body);
 
       if (result['success']) {
-        Get.showSnackbar(GetSnackBar(
-          backgroundColor: Colors.green,
-          message: result['message'],
-          duration: const Duration(seconds: 3),
-        ));
+        // Get.snackbar('Product Fetched', 'Thank youy',
+        //     snackPosition: SnackPosition.TOP);
+        // Get.showSnackbar(GetSnackBar(
+        //   backgroundColor: Colors.green,
+        //   message: result['message'],
+        //   duration: const Duration(seconds: 3),
+        // ));
 
-        featuredProducts = featuredProductsFromJson(
+        featuredProducts = productFromJson(
           jsonEncode(result['data']),
         );
         update();

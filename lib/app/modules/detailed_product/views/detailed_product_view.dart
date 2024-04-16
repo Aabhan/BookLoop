@@ -66,7 +66,7 @@ class DetailedProductView extends GetView<DetailedProductController> {
                                     ),
                                     const SizedBox(height: 10),
                                     SizedBox(
-                                      height: 75,
+                                      height: 120,
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
@@ -109,20 +109,59 @@ class DetailedProductView extends GetView<DetailedProductController> {
                                                     ),
                                                   ),
                                                   const SizedBox(height: 5),
-                                                  Text(
-                                                    product.email ?? '',
-                                                    style: const TextStyle(
-                                                      fontSize: 16,
-                                                      color: Colors.black,
-                                                    ),
+                                                  Row(
+                                                    children: [
+                                                      const Icon(
+                                                        Icons.email,
+                                                        color:
+                                                            Color(0xff9CC69B),
+                                                        size: 20,
+                                                      ),
+                                                      const SizedBox(
+                                                          width:
+                                                              5), // Adjust the spacing between icon and text
+                                                      Text(
+                                                        product.email ?? '',
+                                                        style: const TextStyle(
+                                                          fontSize: 16,
+                                                          color: Colors.black,
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
                                                   const SizedBox(height: 5),
-                                                  Text(
-                                                    product.phoneNumber ?? '',
-                                                    style: const TextStyle(
-                                                      fontSize: 16,
-                                                      color: Colors.black,
+                                                  Row(children: [
+                                                    const Icon(
+                                                      Icons.phone,
+                                                      color: Color(0xff9CC69B),
+                                                      size: 20,
                                                     ),
+                                                    const SizedBox(width: 5),
+                                                    Text(
+                                                      product.phoneNumber ?? '',
+                                                      style: const TextStyle(
+                                                        fontSize: 16,
+                                                        color: Colors.black,
+                                                      ),
+                                                    ),
+                                                  ]),
+                                                  const SizedBox(height: 5),
+                                                  Row(
+                                                    children: [
+                                                      const Icon(
+                                                        Icons.location_on_sharp,
+                                                        color:
+                                                            Color(0xff9CC69B),
+                                                      ),
+                                                      Text(
+                                                        product.userLocation ??
+                                                            '',
+                                                        style: const TextStyle(
+                                                          fontSize: 16,
+                                                          color: Colors.black,
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
                                                 ],
                                               ),
@@ -131,7 +170,7 @@ class DetailedProductView extends GetView<DetailedProductController> {
                                         ],
                                       ),
                                     ),
-                                    const SizedBox(height: 30),
+                                    const SizedBox(height: 15),
                                     RichText(
                                       text: TextSpan(
                                         style: const TextStyle(

@@ -97,7 +97,6 @@ class BlogController extends GetxController {
       Get.snackbar(
         'Error',
         'Failed to load blogs',
-        backgroundColor: Colors.red,
         snackPosition: SnackPosition.BOTTOM,
       );
     } finally {
@@ -154,22 +153,36 @@ class BlogController extends GetxController {
             Get.snackbar(
               'Blog Added',
               'Thank you for adding your blog',
+              duration: Duration(seconds: 2),
               snackPosition: SnackPosition.TOP,
             );
           } else {
-            Get.showSnackbar(GetSnackBar(
-              backgroundColor: Colors.red,
-              message: result['message'],
-              duration: const Duration(seconds: 3),
-            ));
+            Get.snackbar(
+              'Error',
+              'Something Went Wrong',
+              duration: const Duration(seconds: 2),
+              snackPosition: SnackPosition.TOP,
+            );
+            // Get.showSnackbar(GetSnackBar(
+            //   backgroundColor: Colors.red,
+            //   message: result['message'],
+            //   duration: const Duration(seconds: 3),
+            // ));
           }
         } catch (e) {
           print(e);
-          Get.showSnackbar(const GetSnackBar(
-            backgroundColor: Colors.red,
-            message: 'Something went wrong',
-            duration: Duration(seconds: 3),
-          ));
+          Get.snackbar(
+            'Error',
+            'Something Went Wrong',
+            duration: const Duration(seconds: 2),
+            snackPosition: SnackPosition.TOP,
+          );
+
+          // Get.showSnackbar(const GetSnackBar(
+          //   backgroundColor: Colors.red,
+          //   message: 'Something went wrong',
+          //   duration: Duration(seconds: 3),
+          // ));
         }
       }
     } catch (e) {}

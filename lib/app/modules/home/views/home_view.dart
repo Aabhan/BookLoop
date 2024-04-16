@@ -1,4 +1,3 @@
-import 'package:ecom_2/app/components/featuredProductCard.dart';
 import 'package:ecom_2/app/components/product_card.dart';
 import 'package:ecom_2/app/components/user_product_card.dart';
 
@@ -10,6 +9,7 @@ import 'package:ecom_2/app/modules/profile/views/profile_view.dart';
 import 'package:ecom_2/app/routes/app_pages.dart';
 import 'package:ecom_2/app/views/views/about_us_view.dart';
 import 'package:ecom_2/app/views/views/categories_view.dart';
+import 'package:ecom_2/app/views/views/featured_products_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -59,8 +59,13 @@ class HomeView extends GetView<HomeController> {
             ListTile(
               title: const Text('Featured Products'),
               onTap: () {
-                // Update the state of the app.
-                // ...
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const FeaturedProductsView(
+                        products: [],
+                      ),
+                    ));
               },
             ),
             ListTile(
@@ -267,10 +272,38 @@ class HomeView extends GetView<HomeController> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                        'Featured Products',
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Featured Products',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => FeaturedProductsView(
+                                    products: controller.featuredProducts,
+                                  ),
+                                ),
+                              );
+                            },
+                            child: const Text(
+                              'See All',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xff9CC69B),
+                                decoration: TextDecoration.underline,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                       const SizedBox(height: 20),
                       controller.featuredProducts == null
@@ -287,8 +320,8 @@ class HomeView extends GetView<HomeController> {
                                 itemBuilder: (context, index) {
                                   return SizedBox(
                                     width: 200,
-                                    child: FeaturedProductCard(
-                                      featuredProducts:
+                                    child: ProductCard(
+                                      product:
                                           controller.featuredProducts![index],
                                     ),
                                   );
