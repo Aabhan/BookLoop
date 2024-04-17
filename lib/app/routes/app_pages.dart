@@ -203,7 +203,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.EDIT_PROFILE,
-      page: () => EditProfileView(),
+      page: () => const EditProfileView(),
       binding: EditProfileBinding(),
     ),
   ];

@@ -11,12 +11,12 @@ String userToJson(List<User> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class User {
-  final String? userId;
-  final String? email;
-  final String? fullName;
-  final String? role;
-  final String? phoneNumber;
-  final String? userLocation;
+  String? userId;
+  String? email;
+  String? fullName;
+  String? role;
+  String? phoneNumber;
+  String? userLocation;
 
   User({
     this.userId,

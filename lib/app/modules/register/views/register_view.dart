@@ -64,7 +64,7 @@ class RegisterView extends GetView<RegisterController> {
 
                   const SizedBox(height: 25),
                   DropdownButtonFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Location',
                       hintText: 'Choose your location',
                       border: OutlineInputBorder(),

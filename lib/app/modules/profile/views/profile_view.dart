@@ -146,7 +146,7 @@ class ProfileView extends GetView<ProfileController> {
                         trailing:
                             const Icon(Icons.keyboard_arrow_right_rounded),
                         onTap: () {
-                          Get.toNamed(Routes.EDIT_PROFILE, arguments: User);
+                          Get.toNamed(Routes.EDIT_PROFILE);
                         },
                       ),
                       ListTile(
