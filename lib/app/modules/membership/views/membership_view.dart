@@ -45,7 +45,7 @@ class MembershipView extends GetView<MembershipController> {
               ),
               const SizedBox(height: 10),
               const Text(
-                'Rs. 300/ Month',
+                'Rs. 300',
                 style: TextStyle(
                   fontSize: 28,
                   color: Colors.black,

@@ -16,6 +16,9 @@ class Donation {
   String? description;
   String? imageUrl;
   String? userId;
+  String? fullName;
+  String? email;
+  String? phoneNumber;
 
   Donation({
     this.donateId,
@@ -23,6 +26,9 @@ class Donation {
     this.description,
     this.imageUrl,
     this.userId,
+    this.fullName,
+    this.email,
+    this.phoneNumber,
   });
 
   factory Donation.fromJson(Map<String, dynamic> json) => Donation(
@@ -31,6 +37,9 @@ class Donation {
         description: json["description"],
         imageUrl: json["image_url"],
         userId: json["user_id"],
+        fullName: json["full_name"],
+        email: json["email"],
+        phoneNumber: json["phone_number"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -39,5 +48,8 @@ class Donation {
         "description": description,
         "image_url": imageUrl,
         "user_id": userId,
+        "full_name": fullName,
+        "email": email,
+        "phone_number": phoneNumber,
       };
 }

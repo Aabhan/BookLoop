@@ -11,7 +11,6 @@ class EditProfileController extends GetxController {
   User? user;
   var fullNameController = TextEditingController();
   var phoneNumberController = TextEditingController();
-  var emailController = TextEditingController();
 
   var isLoading = false.obs;
 
@@ -45,8 +44,6 @@ class EditProfileController extends GetxController {
         user = User.fromJson(result['data']);
         fullNameController.text = user!.fullName!;
         phoneNumberController.text = user!.phoneNumber!;
-
-        emailController.text = user!.email!;
       } else {
         Get.snackbar('Error', result['message'],
             snackPosition: SnackPosition.TOP,
@@ -68,7 +65,6 @@ class EditProfileController extends GetxController {
         'full_name': fullNameController.text,
         'token': MemoryManagement.getAccessToken(),
         'phone_number': phoneNumberController.text,
-        'email': emailController.text,
       });
       var result = jsonDecode(response.body);
 

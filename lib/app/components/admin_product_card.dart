@@ -6,73 +6,123 @@ import 'package:get/get.dart';
 
 class AdminProductCard extends StatelessWidget {
   final Product product;
-  const AdminProductCard({super.key, required this.product});
+
+  const AdminProductCard({Key? key, required this.product}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
       margin: const EdgeInsets.all(10),
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 2,
-              blurRadius: 5,
-              offset: const Offset(0, 5), // changes position of shadow
-            ),
-          ],
-          borderRadius: BorderRadius.circular(10)),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: const Offset(0, 5), // changes position of shadow
+          ),
+        ],
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.network(
-            getImageUrl(product.imageUrl),
+          Container(
             width: 75,
-            fit: BoxFit.cover,
+            child: Image.network(
+              getImageUrl(product.imageUrl),
+              fit: BoxFit.cover,
+            ),
           ),
-          const SizedBox(
-            width: 10,
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                product.title ?? '',
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
+          const SizedBox(width: 10),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  product.title ?? '',
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                  maxLines: 2, // Limit to two lines
                   overflow: TextOverflow.ellipsis,
                 ),
-              ),
-              Text(
-                'Condition: ${product.isOld == '1' ? 'Old' : 'New'}',
-                style: const TextStyle(
-                  fontSize: 12, // Adjust font size as needed
+                const SizedBox(height: 5),
+                Text(
+                  product.fullName ?? '',
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 12,
+                  ),
+                  maxLines: 2, // Limit to two lines
+                  overflow: TextOverflow.ellipsis,
                 ),
-              ),
-              Text(
-                'Negotiability: ${product.isNegotiable == '1' ? 'Negotiable' : 'Fixed'}',
-                style: const TextStyle(
-                  fontSize: 12, // Adjust font size as needed
+                const SizedBox(height: 3),
+                Text(
+                  'Phone No: ${product.fullName ?? ''}',
+                  style: const TextStyle(
+                    fontSize: 12,
+                  ),
+                  maxLines: 2, // Limit to two lines
+                  overflow: TextOverflow.ellipsis,
                 ),
-              ),
-            ],
+                const SizedBox(height: 3),
+                Text(
+                  'Condition: ${product.isOld == '1' ? 'Old' : 'New'}',
+                  style: const TextStyle(
+                    fontSize: 12, // Adjust font size as needed
+                  ),
+                ),
+                const SizedBox(height: 3),
+                Text(
+                  'Negotiability: ${product.isNegotiable == '1' ? 'Negotiable' : 'Fixed'}',
+                  style: const TextStyle(
+                    fontSize: 12, // Adjust font size as needed
+                  ),
+                ),
+                const SizedBox(height: 3),
+                Row(
+                  children: [
+                    const Icon(
+                      Icons.location_on,
+                      color: Colors.grey,
+                      size: 16, // Adjust the size as needed
+                    ),
+                    const SizedBox(
+                        width: 5), // Add some space between the icon and text
+                    Expanded(
+                      child: Text(
+                        product.userLocation ?? '',
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12,
+                        ),
+                        maxLines: 2, // Limit to two lines
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
-          const Spacer(),
           IconButton(
-              onPressed: () {
-                showDialog(
-                    context: context,
-                    builder: (context) => DeleteProductDialog(
-                          productId: product.productId ?? '',
-                        ));
-              },
-              icon: const Icon(
-                Icons.delete,
-                color: Colors.red,
-              ))
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) => DeleteProductDialog(
+                  productId: product.productId ?? '',
+                ),
+              );
+            },
+            icon: const Icon(
+              Icons.delete,
+              color: Colors.red,
+            ),
+          ),
         ],
       ),
     );

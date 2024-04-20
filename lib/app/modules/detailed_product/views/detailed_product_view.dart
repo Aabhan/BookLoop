@@ -2,6 +2,7 @@ import 'package:ecom_2/app/constants.dart';
 import 'package:ecom_2/app/model/product.dart';
 
 import 'package:ecom_2/app/modules/cart/controllers/cart_controller.dart';
+import 'package:ecom_2/app/views/views/user_profile_view.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -65,112 +66,94 @@ class DetailedProductView extends GetView<DetailedProductController> {
                                       color: Colors.grey,
                                     ),
                                     const SizedBox(height: 10),
-                                    SizedBox(
-                                      height: 120,
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              CircleAvatar(
-                                                radius: 30,
-                                                backgroundColor:
-                                                    const Color(0xff9CC69B),
-                                                child: Text(
-                                                  (product.fullName?[0]
-                                                              .toUpperCase() ??
-                                                          '') +
-                                                      (product.fullName?[1]
-                                                              .toUpperCase() ??
-                                                          ''),
-                                                  style: const TextStyle(
-                                                    fontSize: 35,
-                                                    color: Colors.white,
-                                                  ),
-                                                ),
-
-                                                // You can add a background image here if needed
-                                              ),
-                                              const SizedBox(width: 20),
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    product.fullName
-                                                            ?.toUpperCase() ??
-                                                        '',
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    UserProfileView(
+                                                      fullName:
+                                                          product.fullName,
+                                                      email: product.email,
+                                                      phoneNumber:
+                                                          product.phoneNumber,
+                                                      userLocation:
+                                                          product.userLocation,
+                                                    )));
+                                      },
+                                      child: SizedBox(
+                                        height: 70,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                CircleAvatar(
+                                                  radius: 30,
+                                                  backgroundColor:
+                                                      const Color(0xff9CC69B),
+                                                  child: Text(
+                                                    (product.fullName?[0]
+                                                                .toUpperCase() ??
+                                                            '') +
+                                                        (product.fullName?[1]
+                                                                .toUpperCase() ??
+                                                            ''),
                                                     style: const TextStyle(
-                                                      fontSize: 20,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      color: Colors.black,
+                                                      fontSize: 35,
+                                                      color: Colors.white,
                                                     ),
                                                   ),
-                                                  const SizedBox(height: 5),
-                                                  Row(
-                                                    children: [
-                                                      const Icon(
-                                                        Icons.email,
-                                                        color:
-                                                            Color(0xff9CC69B),
-                                                        size: 20,
-                                                      ),
-                                                      const SizedBox(
-                                                          width:
-                                                              5), // Adjust the spacing between icon and text
-                                                      Text(
-                                                        product.email ?? '',
-                                                        style: const TextStyle(
-                                                          fontSize: 16,
-                                                          color: Colors.black,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  const SizedBox(height: 5),
-                                                  Row(children: [
-                                                    const Icon(
-                                                      Icons.phone,
-                                                      color: Color(0xff9CC69B),
-                                                      size: 20,
-                                                    ),
-                                                    const SizedBox(width: 5),
+
+                                                  // You can add a background image here if needed
+                                                ),
+                                                const SizedBox(width: 20),
+                                                Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
                                                     Text(
-                                                      product.phoneNumber ?? '',
+                                                      product.fullName
+                                                              ?.toUpperCase() ??
+                                                          '',
                                                       style: const TextStyle(
-                                                        fontSize: 16,
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.w600,
                                                         color: Colors.black,
                                                       ),
                                                     ),
-                                                  ]),
-                                                  const SizedBox(height: 5),
-                                                  Row(
-                                                    children: [
-                                                      const Icon(
-                                                        Icons.location_on_sharp,
-                                                        color:
-                                                            Color(0xff9CC69B),
-                                                      ),
-                                                      Text(
-                                                        product.userLocation ??
-                                                            '',
-                                                        style: const TextStyle(
-                                                          fontSize: 16,
-                                                          color: Colors.black,
+                                                    const SizedBox(height: 5),
+                                                    Row(
+                                                      children: [
+                                                        const Icon(
+                                                          Icons
+                                                              .location_on_sharp,
+                                                          color:
+                                                              Color(0xff9CC69B),
                                                         ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          )
-                                        ],
+                                                        Text(
+                                                          product.userLocation ??
+                                                              '',
+                                                          style:
+                                                              const TextStyle(
+                                                            fontSize: 16,
+                                                            color: Colors.black,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     ),
-                                    const SizedBox(height: 15),
+                                    const SizedBox(height: 10),
                                     RichText(
                                       text: TextSpan(
                                         style: const TextStyle(

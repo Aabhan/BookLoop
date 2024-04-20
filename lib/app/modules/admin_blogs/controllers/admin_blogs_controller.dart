@@ -64,19 +64,16 @@ class AdminBlogsController extends GetxController {
 
       if (result['success']) {
         Get.back();
-        Get.showSnackbar(GetSnackBar(
-          backgroundColor: Colors.red,
-          message: result['message'],
-          duration: const Duration(seconds: 3),
-        ));
+        Get.snackbar('Deleted', result['message'],
+            snackPosition: SnackPosition.TOP,
+            duration: const Duration(seconds: 3));
+
         var adminBlogController = Get.find<AdminBlogsController>();
         adminBlogController.getBlog();
       } else {
-        Get.showSnackbar(GetSnackBar(
-          backgroundColor: Colors.red,
-          message: result['message'],
-          duration: const Duration(seconds: 3),
-        ));
+        Get.snackbar('Error', result['message'],
+            snackPosition: SnackPosition.TOP,
+            duration: const Duration(seconds: 3));
       }
     } catch (e) {
       Get.showSnackbar(const GetSnackBar(
@@ -101,8 +98,7 @@ class AdminBlogsController extends GetxController {
         Get.snackbar(
           'Error',
           result['message'] ?? 'Something went wrong',
-          backgroundColor: Colors.red,
-          snackPosition: SnackPosition.BOTTOM,
+          snackPosition: SnackPosition.TOP,
         );
       }
     } catch (e) {
@@ -110,7 +106,7 @@ class AdminBlogsController extends GetxController {
         'Error',
         'Failed to load blogs',
         backgroundColor: Colors.red,
-        snackPosition: SnackPosition.BOTTOM,
+        snackPosition: SnackPosition.TOP,
       );
     } finally {
       isLoading(false);

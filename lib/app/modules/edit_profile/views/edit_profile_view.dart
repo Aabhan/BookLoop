@@ -61,24 +61,6 @@ class EditProfileView extends GetView<EditProfileController> {
                           ),
                         ),
                         const SizedBox(height: 20),
-                        TextFormField(
-                          controller: controller.emailController,
-                          decoration: InputDecoration(
-                            labelText: 'Email Address',
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            contentPadding: const EdgeInsets.symmetric(
-                              horizontal: 16.0,
-                              vertical: 14.0,
-                            ),
-                          ),
-                          style: const TextStyle(
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        const SizedBox(height: 20),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xff9CC69B),

@@ -1,6 +1,7 @@
 import 'package:ecom_2/app/components/My_button.dart';
 import 'package:ecom_2/app/components/adminViewOrderButton.dart';
 import 'package:ecom_2/app/modules/admin_blogs/views/admin_blogs_view.dart';
+import 'package:ecom_2/app/modules/admin_donations/views/admin_donations_view.dart';
 import 'package:ecom_2/app/modules/admin_orders/views/admin_orders_view.dart';
 import 'package:ecom_2/app/modules/admin_products/views/admin_products_view.dart';
 import 'package:ecom_2/app/modules/admin_users/views/admin_users_view.dart';
@@ -58,20 +59,11 @@ class AdminDashboardView extends GetView<AdminDashboardController> {
                     crossAxisSpacing: 10,
                     padding: const EdgeInsets.all(6),
                     children: [
-                      GestureDetector(
-                        // onTap: () {
-                        //   Navigator.push(
-                        //       context,
-                        //       MaterialPageRoute(
-                        //           builder: (context) =>
-                        //               const AdminOrdersView()));
-                        // },
-                        child: StatsCard(
-                          label: 'Total Income',
-                          icon: const Icon(Icons.money_outlined),
-                          isAmount: true,
-                          value: controller.stats?.totalIncome.toString() ?? '',
-                        ),
+                      StatsCard(
+                        label: 'Total Income',
+                        icon: const Icon(Icons.money_outlined),
+                        isAmount: true,
+                        value: controller.stats?.totalIncome.toString() ?? '',
                       ),
                       GestureDetector(
                         onTap: () {
@@ -130,10 +122,20 @@ class AdminDashboardView extends GetView<AdminDashboardController> {
                           value: controller.stats?.totalBlog.toString() ?? '',
                         ),
                       ),
-                      StatsCard(
-                        label: 'Total Donation',
-                        icon: const Icon(Icons.bookmark_add_outlined),
-                        value: controller.stats?.totalDonation.toString() ?? '',
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const AdminDonationsView()));
+                        },
+                        child: StatsCard(
+                          label: 'Total Donation',
+                          icon: const Icon(Icons.bookmark_add_outlined),
+                          value:
+                              controller.stats?.totalDonation.toString() ?? '',
+                        ),
                       )
                     ],
                   ),
@@ -141,12 +143,6 @@ class AdminDashboardView extends GetView<AdminDashboardController> {
               },
             ),
           ),
-          // AdminViewOrderButton(
-          //   tittle: 'View Orders',
-          //   onPressed: () {
-          //     Get.toNamed(Routes.ADMIN_ORDERS);
-          //   },
-          // )
         ],
       ),
     );
